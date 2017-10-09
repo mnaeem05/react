@@ -26,7 +26,13 @@ const styles = {
     position: 'relative',
     left: 590,
     top: 80,
-  }
+  },
+  box01:{
+    fontWeight: 'bold',
+    color: '#ff6666',
+    fontFamily: "monospace",
+    cursor: 'pointer',
+  },
 }
 
 export default class Main extends Component {
@@ -47,14 +53,16 @@ changeHandler(ev) {
     title="Blood Bank Online App"
     iconClassNameRight="muidocs-icon-navigation-expand-more"
     /> 
+        <h2 style={styles.box01}>Login here</h2>
         <TextField
       hintText="Please type here"
-      floatingLabelText="Name"
+      floatingLabelText="Email"
       onChange={(ev) => { this.changeHandler(ev) }}
     /><br />
     <TextField
       hintText="Please type here"
-      floatingLabelText="Age"
+      type="password"
+      floatingLabelText="Password"
     /><br />
           <div style={styles.block}>
         <Checkbox

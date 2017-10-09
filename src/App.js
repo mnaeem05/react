@@ -11,6 +11,7 @@ import Main from './Components/main';
 import About from './Components/about';
 import Contact from './Components/contact';
 import Home from './Components/Home';
+import SignUp from './Components/signup';
 
 const style = {
   position: 'relative',  
@@ -47,6 +48,7 @@ class App extends Component {
       <Route path="/about" component={About}/>
       <Route path="/contact" component={Contact}/>
       <Route path="/Home" component={Home}/>
+      <Route path="/SignUp" component={SignUp}/>
     </div>
   </Router>
 
