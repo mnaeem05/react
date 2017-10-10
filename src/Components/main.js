@@ -37,15 +37,35 @@ const styles = {
 
 export default class Main extends Component {
       
-      constructor() {
-        super();
-        this.state = {
-            value: '',
-        }
-      }
-changeHandler(ev) {
-    console.log({ User_Name: ev.target.value });
+constructor(props) {
+    super(props);
+    this.state = {
+      username:'',
+      email:'',
+      value: ''};
+
+    this.handleChangeUsername = this.handleChangeUsername.bind(this);
+    this.handleChangeUserPwd = this.handleChangeUserPwd.bind(this);
+    
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleChangeUsername(event) {
+    this.setState({username: event.target.value});
+    // this.setState({username:''})
+    // this.setState({this.state.username:''})
+  }
+   handleChangeUserPwd(event) {
+    this.setState({pwd: event.target.value});
+  }
+
+  handleSubmit(event) {
+    console.log('User Name: ' + this.state.username);
+    console.log('User Password: ' + this.state.pwd);
+    event.preventDefault();
+  }
+
+
 
   render() {
     return (
@@ -54,22 +74,28 @@ changeHandler(ev) {
     iconClassNameRight="muidocs-icon-navigation-expand-more"
     /> 
         <h2 style={styles.box01}>Login here</h2>
+        <form onSubmit={this.handleSubmit}>
         <TextField
       hintText="Please type here"
-      floatingLabelText="Email"
-      onChange={(ev) => { this.changeHandler(ev) }}
+      floatingLabelText="User Name"
+      required
+      value={this.state.username} onChange={this.handleChangeUsername}  
     /><br />
     <TextField
       hintText="Please type here"
       type="password"
       floatingLabelText="Password"
+      required
+      value={this.state.pwd} onChange={this.handleChangeUserPwd}
     /><br />
           <div style={styles.block}>
         <Checkbox
           label="I Agree"
+          required
           style={styles.checkbox}/>
     </div>
     <button value="Submit" style={styles.button3}> Submit </button>
+    </form>
     </div>
     )
   }
