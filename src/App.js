@@ -13,11 +13,15 @@ import Contact from './Components/contact';
 import Home from './Components/Home';
 import SignUp from './Components/signup';
 
-const style = {
-  position: 'relative',  
-  top: 8,
+const styles = {
+  box01:{
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#ff6666',
+    fontFamily: "monospace",
+    textDecoration: "none",
+  },
 }
-
 class App extends Component {
   constructor (props) {
     super(props)
@@ -39,7 +43,7 @@ class App extends Component {
          <Router>
     <div>
         <ul>
-        <li><Link to="/Home">Home</Link></li>
+        <li><Link style={styles.box01} to="/Home">Home</Link></li>
       </ul>
 
       <hr/>

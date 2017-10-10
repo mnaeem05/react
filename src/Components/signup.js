@@ -86,7 +86,7 @@ export default class signup extends Component {
       hintText="Above 18 Only"
       floatingLabelText="Age"
       maxLength= '2'
-      // required
+      required
       value={this.state.age} onChange={this.handleChangeAge}
     /><br />
     <TextField
@@ -94,14 +94,14 @@ export default class signup extends Component {
       type="password"
       floatingLabelText="Password"
       maxLength= '8'
-      // required
+      required
     /><br />
     <TextField
       hintText="Must be same"
       type="password"
       floatingLabelText="Confirm password"
       maxLength= '8'
-      // required
+      required
     />
     <button value="Submit" style={styles.button4}> Submit </button>
     </form>
