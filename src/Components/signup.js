@@ -34,11 +34,15 @@ export default class signup extends Component {
       username:'',
       email:'',
       age:'',
+      pwd1:'',
+      pwd2:'',
       value: ''};
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangeAge = this.handleChangeAge.bind(this);
+    this.handlePwd1 = this.handlePwd1.bind(this);
+    this.handlePwd2 = this.handlePwd2.bind(this);
     
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -52,12 +56,24 @@ export default class signup extends Component {
   handleChangeAge(event){
      this.setState({age: event.target.value});
   }
+  handlePwd1(event){
+     this.setState({pwd1: event.target.value});
+  }
+  handlePwd2(event){
+     this.setState({pwd2: event.target.value});
+  }
 
 
   handleSubmit(event) {
     console.log('User Name: ' + this.state.username);
     console.log('User Email: ' + this.state.email);
     console.log('User Age: ' + this.state.age);
+
+    this.setState({username:''});
+    this.setState({email:''});
+    this.setState({age:''});
+    this.setState({pwd1:''});
+    this.setState({pwd2:''});
     event.preventDefault();
   }
 
@@ -94,6 +110,7 @@ export default class signup extends Component {
       type="password"
       floatingLabelText="Password"
       maxLength= '8'
+      value={this.state.pwd1} onChange={this.handlePwd1}
       required
     /><br />
     <TextField
@@ -101,6 +118,7 @@ export default class signup extends Component {
       type="password"
       floatingLabelText="Confirm password"
       maxLength= '8'
+      value={this.state.pwd2} onChange={this.handlePwd2}
       required
     />
     <button value="Submit" style={styles.button4}> Submit </button>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {FlatButton, RaisedButton} from 'material-ui/';
 import logo from './logo.svg';
+import logo2 from './logo2.png';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -34,7 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo2} className="App-logo" alt="logo" />
           <h2>Welcome to Blood Bank App</h2>
         </div>
         <p className="App-intro">          

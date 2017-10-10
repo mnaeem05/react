@@ -52,8 +52,6 @@ constructor(props) {
 
   handleChangeUsername(event) {
     this.setState({username: event.target.value});
-    // this.setState({username:''})
-    // this.setState({this.state.username:''})
   }
    handleChangeUserPwd(event) {
     this.setState({pwd: event.target.value});
@@ -62,6 +60,8 @@ constructor(props) {
   handleSubmit(event) {
     console.log('User Name: ' + this.state.username);
     console.log('User Password: ' + this.state.pwd);
+    this.setState({username:''});
+    this.setState({pwd:''});
     event.preventDefault();
   }
 
