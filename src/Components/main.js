@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {AppBar, TextField, Checkbox} from 'material-ui/';
+import {AppBar, TextField, Checkbox, Drawer, MenuItem, RaisedButton} from 'material-ui/';
 
 const styles = {
   block: {
@@ -33,6 +33,11 @@ const styles = {
     fontFamily: "monospace",
     cursor: 'pointer',
   },
+  box02: {
+    position: 'relative',
+    right: 10,
+    top: 10,
+  },
 }
 
 export default class Main extends Component {
@@ -42,7 +47,9 @@ constructor(props) {
     this.state = {
       username:'',
       email:'',
-      value: ''};
+      value: '',
+      open: false,
+};
 
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangeUserPwd = this.handleChangeUserPwd.bind(this);
@@ -65,14 +72,30 @@ constructor(props) {
     event.preventDefault();
   }
 
+  
 
+  handleToggle = () => this.setState({open: !this.state.open});
 
+  
   render() {
     return (
-        <div> <AppBar
+        <div> 
+        
+        <AppBar
     title="Blood Bank Online App"
     iconClassNameRight="muidocs-icon-navigation-expand-more"
     /> 
+        
+        <RaisedButton
+          onClick={this.handleToggle}
+          label="="
+          style={styles.box02}
+        />
+        <Drawer open={this.state.open}>
+          <MenuItem>Dashboard</MenuItem>
+          <MenuItem>Donor List</MenuItem>
+          <MenuItem>Profile</MenuItem>
+        </Drawer>
         <h2 style={styles.box01}>Login here</h2>
         <form onSubmit={this.handleSubmit}>
         <TextField
