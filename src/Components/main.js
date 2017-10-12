@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import {AppBar, TextField, Checkbox, Drawer, MenuItem, RaisedButton} from 'material-ui/';
+import {AppBar, TextField, Checkbox, Drawer, RaisedButton, IconMenu, MenuItem, IconButton} from 'material-ui/';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import Menu from 'material-ui/svg-icons/navigation/menu';
+
 
 const styles = {
   block: {
@@ -38,6 +41,11 @@ const styles = {
     right: 10,
     top: 10,
   },
+  box03: {
+    position: 'relative',
+    right: -80,
+    top: 120,
+  }
 }
 
 export default class Main extends Component {
@@ -75,26 +83,41 @@ constructor(props) {
   
 
   handleToggle = () => this.setState({open: !this.state.open});
+  handleClose = () => this.setState({open: false});
 
-  
   render() {
     return (
         <div> 
-        
+          <div style={styles.box03}>
+    <IconMenu
+      iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+      anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+      targetOrigin={{horizontal: 'left', vertical: 'top'}}
+    >
+      <MenuItem primaryText="Account" />
+      <MenuItem primaryText="Settings" />
+      <MenuItem primaryText="Help" />
+      <MenuItem primaryText="Sign out" />
+    </IconMenu>
+  </div>
+
+
         <AppBar
     title="Blood Bank Online App"
-    iconClassNameRight="muidocs-icon-navigation-expand-more"
+    // iconClassNameRight="muidocs-icon-navigation-expand-more"
+    iconElementLeft={<IconButton><Menu  onClick={this.handleToggle}/></IconButton>}
     /> 
         
-        <RaisedButton
-          onClick={this.handleToggle}
-          label="="
-          style={styles.box02}
-        />
-        <Drawer open={this.state.open}>
-          <MenuItem>Dashboard</MenuItem>
-          <MenuItem>Donor List</MenuItem>
-          <MenuItem>Profile</MenuItem>
+        
+        <Drawer           
+          docked={false}
+          width={200}
+          open={this.state.open}
+          onRequestChange={(open) => this.setState({open})}>
+          <MenuItem onClick={this.handleClose}>Dashboard</MenuItem>
+          <MenuItem onClick={this.handleClose}>Donor</MenuItem>
+          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+
         </Drawer>
         <h2 style={styles.box01}>Login here</h2>
         <form onSubmit={this.handleSubmit}>
