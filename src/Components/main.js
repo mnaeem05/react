@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {AppBar, TextField, Checkbox, Drawer, RaisedButton, IconMenu, MenuItem, IconButton} from 'material-ui/';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import Menu from 'material-ui/svg-icons/navigation/menu';
+import { Link } from 'react-router-dom';
+
 
 
 const styles = {
@@ -30,7 +32,7 @@ const styles = {
     left: 590,
     top: 80,
   },
-  box01:{
+  boxlogin:{
     fontWeight: 'bold',
     color: '#ff6666',
     fontFamily: "monospace",
@@ -45,10 +47,24 @@ const styles = {
     position: 'relative',
     right: -80,
     top: 120,
-  }
+  },
+  box01:{
+    position: 'relative',
+    right: 25,
+    top: 10,
+    fontSize: 18,
+    color: '#555555',
+    textDecoration: "none",
+  },
+  icon1: {
+    position: 'relative',
+    left: 650,
+    bottom: 150,
+  },
 }
 
 export default class Main extends Component {
+
       
 constructor(props) {
     super(props);
@@ -87,9 +103,10 @@ constructor(props) {
 
   render() {
     return (
-        <div> 
-          <div style={styles.box03}>
+        <div>
+          <div className="box03"> M. Naeem
     <IconMenu
+      style={styles.icon1}
       iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
       anchorOrigin={{horizontal: 'left', vertical: 'top'}}
       targetOrigin={{horizontal: 'left', vertical: 'top'}}
@@ -114,12 +131,14 @@ constructor(props) {
           width={200}
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}>
-          <MenuItem onClick={this.handleClose}>Dashboard</MenuItem>
-          <MenuItem onClick={this.handleClose}>Donor</MenuItem>
-          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-
+          <MenuItem onClick={this.handleClose}>   
+        <Link style={styles.box01} to="/dashboard">Dashboard</Link>
+        </MenuItem>
+          <MenuItem onClick={this.handleClose} style={styles.box01}>Donor</MenuItem>
+          <MenuItem onClick={this.handleClose} style={styles.box01}>Profile</MenuItem>
+          <MenuItem onClick={this.handleClose} style={styles.box01}>Sign up</MenuItem>
         </Drawer>
-        <h2 style={styles.box01}>Login here</h2>
+        <h2 style={styles.boxlogin}>Login here</h2>
         <form onSubmit={this.handleSubmit}>
         <TextField
       hintText="Please type here"

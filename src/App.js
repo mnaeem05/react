@@ -9,7 +9,7 @@ import {
   Link
 } from 'react-router-dom';
 import Main from './Components/main';
-import About from './Components/about';
+import Dashboard from './Components/dashboard';
 import Contact from './Components/contact';
 import Home from './Components/Home';
 import SignUp from './Components/signup';
@@ -50,7 +50,7 @@ class App extends Component {
       <hr/>
 
       <Route exact path="/" component={Main}/>
-      <Route path="/about" component={About}/>
+      <Route path="/dashboard" component={Dashboard}/>
       <Route path="/contact" component={Contact}/>
       <Route path="/Home" component={Home}/>
       <Route path="/SignUp" component={SignUp}/>

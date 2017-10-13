@@ -1,14 +1,13 @@
 .App {
   text-align: center;
 }
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 90px;
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #555555;
   height: 120px;
   padding: 20px;
   color: white;
@@ -27,4 +26,14 @@ ul{
   text-decoration: none;
   font-size: 20px;
   font-family: sans-serif;
+}
+.box03{
+    width: 90px;
+    height: 20px;
+    position: absolute;
+    top: 320px;
+    left: 150px;
+    background-color: #3DAE38;
+    border: 1px solid #3DAE38;
+    cursor: pointer;
 }

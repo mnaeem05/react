@@ -14,12 +14,11 @@ const styles = {
 export default class Home extends Component {
   render() {
     return (
-        <div> Home 
-        
+        <div>  
               <ul>
         <li ><Link style={styles.box01} to="/signup">Sign Up</Link></li>
         <li><Link style={styles.box01} to="/">Sign In</Link></li>
-        <li><Link style={styles.box01} to="/about">About</Link></li>
+        <li><Link style={styles.box01} to="/dashboard">Dashboard</Link></li>
         <li><Link style={styles.box01} to="/contact">Contact</Link></li>
         </ul>
         </div>
