@@ -38,7 +38,9 @@ export default class signup extends Component {
       age:'',
       pwd1:'',
       pwd2:'',
-      value: ''};
+      value: '',
+      isvalid: false,
+      message: ''};
 
     this.ref = firebase.database().ref();  
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -65,16 +67,29 @@ export default class signup extends Component {
   }
 
   sendToFirebase(ev) {
-    ev.preventDefault();
-    this.ref.child("users").push({ name: this.state.username, email: this.state.email, age: this.state.age, pwd1: this.state.pwd1, pwd2: this.state.pwd2 });
-    this.setState({username:""})
-    this.setState({email:""})
-    this.setState({age:""})
-    this.setState({pwd1:""})
-    this.setState({pwd2:""})    
-  }
-
     
+    ev.preventDefault();
+
+    if (this.state.pwd1 === this.state.pwd2) {
+          this.setState({isvalid:true})
+        } else {
+           this.setState({isvalid:true})
+        }
+      if (this.state.isvalid == true) {
+          this.ref.child("users").push({ name: this.state.username, email: this.state.email, age: this.state.age, pwd1: this.state.pwd1, pwd2: this.state.pwd2 });
+          this.setState({username:""})
+          this.setState({email:""})
+          this.setState({age:""})
+          this.setState({pwd1:""})
+          this.setState({pwd2:""})    
+          this.setState({message:""})
+      }
+      else{
+        this.setState({message:"Incorrect Password"})    
+      }
+  }    
+
+  
     render() {
     return (
         <div>
@@ -118,6 +133,7 @@ export default class signup extends Component {
       required
     />
     <button value="Submit" style={styles.button4}> Submit </button>
+    <div className="main1">{this.state.message} </div>
     </form>
     <br />
         </div>

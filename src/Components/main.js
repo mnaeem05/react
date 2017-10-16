@@ -43,11 +43,6 @@ const styles = {
     right: 10,
     top: 10,
   },
-  box03: {
-    position: 'relative',
-    right: -80,
-    top: 120,
-  },
   box01:{
     position: 'relative',
     right: 25,
@@ -104,7 +99,6 @@ constructor(props) {
   render() {
     return (
         <div>
-          <div className="box03"> M. Naeem
     <IconMenu
       style={styles.icon1}
       iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
@@ -116,7 +110,6 @@ constructor(props) {
       <MenuItem primaryText="Help" />
       <MenuItem primaryText="Sign out" />
     </IconMenu>
-  </div>
 
 
         <AppBar
