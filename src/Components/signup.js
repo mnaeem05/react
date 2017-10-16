@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {TextField} from 'material-ui/';
+import * as firebase from 'firebase';
+import '../fbconfig'
 
 const styles = {
     box02:{
@@ -38,13 +40,12 @@ export default class signup extends Component {
       pwd2:'',
       value: ''};
 
+    this.ref = firebase.database().ref();  
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangeAge = this.handleChangeAge.bind(this);
     this.handlePwd1 = this.handlePwd1.bind(this);
     this.handlePwd2 = this.handlePwd2.bind(this);
-    
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChangeUsername(event) {
@@ -63,27 +64,22 @@ export default class signup extends Component {
      this.setState({pwd2: event.target.value});
   }
 
-
-  handleSubmit(event) {
-    console.log('User Name: ' + this.state.username);
-    console.log('User Email: ' + this.state.email);
-    console.log('User Age: ' + this.state.age);
-
-    this.setState({username:''});
-    this.setState({email:''});
-    this.setState({age:''});
-    this.setState({pwd1:''});
-    this.setState({pwd2:''});
-    event.preventDefault();
+  sendToFirebase(ev) {
+    ev.preventDefault();
+    this.ref.child("users").push({ name: this.state.username, email: this.state.email, age: this.state.age, pwd1: this.state.pwd1, pwd2: this.state.pwd2 });
+    this.setState({username:""})
+    this.setState({email:""})
+    this.setState({age:""})
+    this.setState({pwd1:""})
+    this.setState({pwd2:""})    
   }
-
 
     
     render() {
     return (
         <div>
         <h2 style={styles.box02} >Create Account</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form  onSubmit={this.sendToFirebase.bind(this)}>
         <TextField
       hintText="Please type your name"
       floatingLabelText="User Name"
