@@ -52,3 +52,59 @@ ul{
   color: red;
   font-size: 18px;
 }
+#box10{
+    height: 500px;
+    width: 1438px;
+    position: absolute;
+    top: 280px;
+    border: 100px;
+    background-color: #222222;
+    border: 1px solid #222222;
+}
+#box17{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: whitesmoke;
+    position: absolute;
+    left: 580px;
+    top: -25px;
+    font-size: 30px;
+}
+#box18{
+    border-style: solid;
+    border-width: 2px;
+    background-color: orangered;
+    color: orangered;
+    width: 300px;
+    left: 590px;
+    position: absolute;
+    top: 30px;   
+}
+#box19{
+    font-family: sans-serif;
+    color: whitesmoke;
+    position: absolute;
+    left: 420px;
+    top: 40px;
+    font-size: 15px;
+}
+#box20{
+    font-family: sans-serif;
+    color: whitesmoke;
+    position: absolute;
+    left: 580px;
+    top: 70px;
+    font-size: 15px;
+}
+#box21{
+    height: 80px;
+    left: 250px;
+    position: absolute;
+    left: 300px;
+    top: 150px;
+}
+#box22{
+    position: absolute;
+    top: 150px;
+    height: 90px;
+    left: 380px;
+}
