@@ -37,7 +37,6 @@ export default class signup extends Component {
       email:'',
       age:'',
       pwd1:'',
-      pwd2:'',
       value: '',
       isvalid: false,
       message: ''};
@@ -47,7 +46,6 @@ export default class signup extends Component {
     this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangeAge = this.handleChangeAge.bind(this);
     this.handlePwd1 = this.handlePwd1.bind(this);
-    this.handlePwd2 = this.handlePwd2.bind(this);
   }
 
   handleChangeUsername(event) {
@@ -57,37 +55,22 @@ export default class signup extends Component {
     this.setState({email: event.target.value});
   }
   handleChangeAge(event){
-     this.setState({age: event.target.value});
-  }
+     this.setState({age: event.target.value})}
+  
   handlePwd1(event){
      this.setState({pwd1: event.target.value});
-  }
-  handlePwd2(event){
-     this.setState({pwd2: event.target.value});
   }
 
   sendToFirebase(ev) {
     
     ev.preventDefault();
-
-    if (this.state.pwd1 === this.state.pwd2) {
-          this.setState({isvalid:true})
-        } else {
-           this.setState({isvalid:true})
-        }
-      if (this.state.isvalid == true) {
-          this.ref.child("users").push({ name: this.state.username, email: this.state.email, age: this.state.age, pwd1: this.state.pwd1, pwd2: this.state.pwd2 });
+          this.ref.child("users").push({ name: this.state.username, email: this.state.email, age: this.state.age, pwd1: this.state.pwd1});
           this.setState({username:""})
           this.setState({email:""})
           this.setState({age:""})
-          this.setState({pwd1:""})
-          this.setState({pwd2:""})    
+          this.setState({pwd1:""})    
           this.setState({message:""})
       }
-      else{
-        this.setState({message:"Incorrect Password"})    
-      }
-  }    
 
   
     render() {
@@ -112,7 +95,8 @@ export default class signup extends Component {
       type="number"
       hintText="Above 18 Only"
       floatingLabelText="Age"
-      maxLength= '2'
+      min= '1'
+      max= '100'
       required
       value={this.state.age} onChange={this.handleChangeAge}
     /><br />
@@ -124,14 +108,6 @@ export default class signup extends Component {
       value={this.state.pwd1} onChange={this.handlePwd1}
       required
     /><br />
-    <TextField
-      hintText="Must be same"
-      type="password"
-      floatingLabelText="Confirm password"
-      maxLength= '8'
-      value={this.state.pwd2} onChange={this.handlePwd2}
-      required
-    />
     <button value="Submit" style={styles.button4}> Submit </button>
     <div className="main1">{this.state.message} </div>
     </form>
