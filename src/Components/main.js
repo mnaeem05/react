@@ -3,7 +3,8 @@ import {AppBar, TextField, Checkbox, Drawer, RaisedButton, IconMenu, MenuItem, I
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import { Link } from 'react-router-dom';
-
+import * as firebase from 'firebase';
+import '../fbconfig'
 
 
 const styles = {
@@ -89,9 +90,28 @@ constructor(props) {
     this.setState({username:''});
     this.setState({pwd:''});
     event.preventDefault();
+      this.signin()    
   }
+  signin() {
+       firebase.auth().signInWithEmailAndPassword(this.state.username, this.state.pwd)
+            .then((res) => {
+                localStorage.setItem("user", JSON.stringify(res));
+                window.location.href = "./dashboard"
+            })
+            .catch((e) => {
+                console.log(e);
+                switch (e.code) {
+                    case "auth/wrong-password": // wrong password on sign in
+                        alert(e.message)
+                        break;
+                    case "auth/user-not-found": // user not found on sign in on wrong email
+                        alert(e.message)
+                        break;
+                }
+            })
+    }
 
-  
+
 
   handleToggle = () => this.setState({open: !this.state.open});
   handleClose = () => this.setState({open: false});
@@ -144,6 +164,7 @@ constructor(props) {
       type="password"
       floatingLabelText="Password"
       required
+      maxLength= '8'
       value={this.state.pwd} onChange={this.handleChangeUserPwd}
     /><br />
           <div style={styles.block}>

@@ -62,17 +62,35 @@ export default class signup extends Component {
   }
 
   sendToFirebase(ev) {
-    
     ev.preventDefault();
-          this.ref.child("users").push({ name: this.state.username, email: this.state.email, age: this.state.age, pwd1: this.state.pwd1});
+              firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.pwd1)
+            .then((res) => {
+                if (res.uid) {
+          this.ref.child("users").push({ name: this.state.username, email: this.state.email, age: this.state.age, pwd1: 	  this.state.pwd1});
           this.setState({username:""})
           this.setState({email:""})
           this.setState({age:""})
           this.setState({pwd1:""})    
-          this.setState({message:""})
-      }
+          this.setState({message:""}) 
+                    // document.getElementById("signup").style.display = 'none'
+                    // document.getElementById("signin").style.display = 'block'
+                }
+            })
+            .catch((e) => {
+                console.log("error", e);
+                switch (e.code) {
+                    case 'auth/weak-password':
+                        alert(e.message)
+                        break;
+                    case 'auth/email-already-in-use':
+                        alert(e.message)
+                        break;
+                }
+            })
+    }
 
-  
+
+
     render() {
     return (
         <div>
